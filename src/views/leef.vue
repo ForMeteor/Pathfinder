@@ -3,12 +3,14 @@
   <div>
     <img alt="Vue logo" src="../assets/logo.png" />
     <button @click="iop">click</button>
-    <span>{{count}}</span>
+    <p>{{count}}</p>
+    <p>{{id}}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent,ref } from 'vue'
+import { useRouter,useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'home',
@@ -16,13 +18,15 @@ export default defineComponent({
   },
   setup(){
     let count = ref(12)
-    return{
-      count
+    const route = useRoute();
+    let id = route.query.id
+    const iop = ()=>{
+      count.value++
     }
-  },
-  methods: {
-    iop(){
-      this.count++
+    return{
+      count,
+      id,
+      iop
     }
   },
 })

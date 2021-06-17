@@ -5,13 +5,14 @@
     <p @click="add">{{count}}</p>
     <p>{{k}}</p>
     <p>{{obj}}</p>
+    <p>{{id}}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent,onMounted,ref, watch,reactive} from 'vue'
+import { computed, defineComponent,onMounted,ref, watch,reactive,toRefs} from 'vue'
 import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { useRouter,useRoute } from 'vue-router';
 import HelloWorld from '../components/HelloWorld.vue'
 
 export default defineComponent({
@@ -21,6 +22,8 @@ export default defineComponent({
   },
   setup(){
     const router = useRouter();
+    const route = useRoute();
+    let id = route.query.id
     const store = useStore();
     const count = computed(()=>{
       return store.state.count
@@ -54,7 +57,9 @@ export default defineComponent({
       max,
       add,
       count,
+      id,
       k,
+      // ...toRefs(obj)
       obj
     }
   },

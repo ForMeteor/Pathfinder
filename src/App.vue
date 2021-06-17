@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <button @click="push({ name: 'home' })">1</button>
-    <button @click="push({ name: 'leef' })">2</button>
+    <button @click="push({ name: 'home',query:{id: 666} })">1</button>
+    <button @click="push({ name: 'leef',query:{id: 999} })">2</button>
     <router-view></router-view>
   </div>
 </template>
